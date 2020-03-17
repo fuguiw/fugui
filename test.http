@@ -1,0 +1,10 @@
+# curl "http://localhost:9999/v2/hello/haha"
+GET http://localhost:4444/v2/hello/haha
+
+###
+
+# curl "http://localhost:4444/v1/hello?name=wuha"
+GET http://localhost:4444/v1/hello?name=wuha
+
+###
+
