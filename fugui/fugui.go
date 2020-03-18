@@ -32,7 +32,6 @@ func New() *Engine {
 	engine.groups = []*RouterGroup{engine.RouterGroup}
 	return engine
 }
-
 func (group *RouterGroup) Group(prefix string) *RouterGroup {
 	engine := group.engine
 	newGroup := &RouterGroup{
