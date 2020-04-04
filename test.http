@@ -15,3 +15,14 @@ username=wuha&password=123
 
 ###
 
+GET http://localhost:4444/assets/file1.txt
+
+###
+
+GET http://localhost:4444
+
+###
+
+GET http://localhost:4444/students
+
+###
