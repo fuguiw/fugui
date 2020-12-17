@@ -8,7 +8,9 @@ type HandlerFunc func(*Context)
 
 // Engine implement the interface of ServeHTTP
 type Engine struct {
+	*RouterGroup
 	router *router
+	groups []*RouterGroup
 }
 
 func (engine *Engine) ServeHTTP(w http.ResponseWriter, req *http.Request) {
@@ -17,9 +19,17 @@ func (engine *Engine) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 }
 
 func New() *Engine {
-	return &Engine{
+	engine := &Engine{
 		router: newRouter(),
 	}
+	engine.RouterGroup = &RouterGroup{
+		engine: engine,
+	}
+	engine.groups = []*RouterGroup{
+		engine.RouterGroup,
+	}
+
+	return engine
 }
 
 func (engine *Engine) addRoute(method string, pattern string, handler HandlerFunc) {
